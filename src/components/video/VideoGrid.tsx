@@ -10,7 +10,7 @@ interface VideoGridProps {
 const VideoGrid = ({ videos, variant = "default" }: VideoGridProps) => {
   if (variant === "compact") {
     return (
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
         {videos.map((video, index) => (
           <VideoCard key={video.id} video={video} variant="compact" index={index} />
         ))}

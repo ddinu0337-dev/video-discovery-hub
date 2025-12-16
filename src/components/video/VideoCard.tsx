@@ -34,6 +34,13 @@ const VideoCard = ({ video, variant = "default", index = 0 }: VideoCardProps) =>
         >
           {video.title}
         </h3>
+        
+        {video.description && (
+          <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+            {video.description}
+          </p>
+        )}
+        
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <span>{video.channel}</span>
           <span>•</span>
