@@ -13,7 +13,7 @@ const Header = () => {
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] text-primary-foreground">
             <Play className="h-4 w-4 fill-current" />
           </div>
           <span className="text-lg font-semibold text-foreground tracking-tight">
