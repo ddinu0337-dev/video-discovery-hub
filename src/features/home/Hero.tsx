@@ -14,7 +14,7 @@ const Hero = ({ onSearch }: HeroProps) => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-foreground"
+          className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
         >
           Search and interact with{" "}
           <span className="text-primary">videos using AI</span>
