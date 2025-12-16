@@ -1,25 +1,30 @@
-import { Send } from "lucide-react";
+import { Send, AlertCircle, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import type { Video } from "@/types/video";
 import { SearchVideoCard } from "@/components/video";
 import { RotatingCircleLoader } from "@/components/common/Loaders";
 import { Header } from "@/components/layout";
+import { Button } from "@/components/ui/button";
 
 interface SearchResultsProps {
   query: string;
   videos: Video[];
   isLoading: boolean;
+  error?: string | null;
   onSearch: (query: string) => void;
   onClear: () => void;
+  onRetry?: () => void;
 }
 
 const SearchResults = ({
   query,
   videos,
   isLoading,
+  error,
   onSearch,
   onClear,
+  onRetry,
 }: SearchResultsProps) => {
   const [inputValue, setInputValue] = useState("");
 
@@ -43,14 +48,36 @@ const SearchResults = ({
       {/* Content Area */}
       <div className="flex-1 overflow-y-auto pb-28">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6">
-          {/* Video Results */}
+          {/* Loading State */}
           {isLoading && (
             <div className="flex items-center justify-center py-12">
               <RotatingCircleLoader />
             </div>
           )}
 
-          {!isLoading && (
+          {/* Error State */}
+          {!isLoading && error && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center justify-center py-12 text-center"
+            >
+              <div className="rounded-full bg-destructive/10 p-3 mb-4">
+                <AlertCircle className="h-6 w-6 text-destructive" />
+              </div>
+              <h3 className="text-lg font-medium text-foreground mb-2">Search Failed</h3>
+              <p className="text-sm text-muted-foreground mb-4 max-w-md">{error}</p>
+              {onRetry && (
+                <Button variant="outline" onClick={onRetry} className="gap-2">
+                  <RefreshCw className="h-4 w-4" />
+                  Try Again
+                </Button>
+              )}
+            </motion.div>
+          )}
+
+          {/* Video Results */}
+          {!isLoading && !error && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
