@@ -9,38 +9,38 @@ const Index = () => {
   const { query, isSearching, isLoading, results, search, clear } = useSearch();
 
   return (
-    <Shell>
-      <AnimatePresence mode="wait">
-        {!isSearching ? (
-          <motion.div
-            key="home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
+    <AnimatePresence mode="wait">
+      {!isSearching ? (
+        <motion.div
+          key="home"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Shell>
             <Hero onSearch={search} />
             <RecentVideos videos={recentVideos} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="results"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <SearchResults
-              query={query}
-              videos={results}
-              isLoading={isLoading}
-              onSearch={search}
-              onClear={clear}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </Shell>
+          </Shell>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="results"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <SearchResults
+            query={query}
+            videos={results}
+            isLoading={isLoading}
+            onSearch={search}
+            onClear={clear}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
