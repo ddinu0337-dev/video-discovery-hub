@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import type { Video } from "@/types/video";
 import { SearchVideoCard } from "@/components/video";
-import { WaveLoader } from "@/components/common/Loaders";
+import { RotatingCircleLoader } from "@/components/common/Loaders";
 import { Header } from "@/components/layout";
 
 interface SearchResultsProps {
@@ -46,7 +46,7 @@ const SearchResults = ({
           {/* Video Results */}
           {isLoading && (
             <div className="flex items-center justify-center py-12">
-              <WaveLoader />
+              <RotatingCircleLoader />
             </div>
           )}
 
