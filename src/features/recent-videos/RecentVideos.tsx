@@ -1,4 +1,4 @@
-import { Clock, Play } from "lucide-react";
+import { Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Video } from "@/types/video";
 import { VideoGrid } from "@/components/video";
@@ -10,12 +10,12 @@ interface RecentVideosProps {
 const RecentVideos = ({ videos }: RecentVideosProps) => {
   if (videos.length === 0) {
     return (
-      <section className="py-16">
+      <section className="py-10">
         <div className="text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/10">
-            <Play className="h-7 w-7 text-primary" />
+          <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-secondary">
+            <Clock className="h-5 w-5 text-muted-foreground" />
           </div>
-          <p className="mt-5 text-base text-muted-foreground">
+          <p className="mt-3 text-sm text-muted-foreground">
             No recent videos yet. Start searching to explore.
           </p>
         </div>
@@ -25,16 +25,14 @@ const RecentVideos = ({ videos }: RecentVideosProps) => {
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.3 }}
-      className="pb-16"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, delay: 0.15 }}
+      className="pb-12"
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
-          <Clock className="h-4 w-4 text-primary" />
-        </div>
-        <h2 className="text-xl font-semibold text-foreground">Recent Videos</h2>
+      <div className="flex items-center gap-2 mb-4">
+        <Clock className="h-4 w-4 text-muted-foreground" />
+        <h2 className="text-base font-medium text-foreground">Recent</h2>
       </div>
 
       <VideoGrid videos={videos} variant="compact" />

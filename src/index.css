@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 14% 10%;
 
-    --primary: 250 91% 60%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 20% 96%;
@@ -24,15 +24,15 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
 
-    --accent: 280 80% 60%;
-    --accent-foreground: 280 80% 30%;
+    --accent: 217 91% 95%;
+    --accent-foreground: 217 91% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 250 91% 60%;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
@@ -42,48 +42,46 @@
     --text-tertiary: 220 9% 60%;
     --shadow-subtle: 220 14% 10%;
     
-    /* Vibrant gradient theme */
-    --gradient-primary: linear-gradient(135deg, hsl(250 91% 60%), hsl(280 80% 60%));
-    --gradient-header: linear-gradient(90deg, hsl(250 91% 60%), hsl(280 80% 60%));
-    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(250 91% 60% / 0.15), transparent);
+    /* Blue/Cyan gradient theme */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(221 83% 40%));
+    --gradient-header: linear-gradient(90deg, hsl(217 91% 60%), hsl(187 85% 53%));
   }
 
   .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
 
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 250 91% 65%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 10% 12%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 240 10% 15%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 280 80% 65%;
-    --accent-foreground: 280 80% 85%;
+    --accent: 217 91% 20%;
+    --accent-foreground: 217 91% 80%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 250 91% 65%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
 
-    --surface-elevated: 240 10% 8%;
-    --surface-hover: 240 10% 10%;
-    --text-tertiary: 240 5% 55%;
+    --surface-elevated: 222 47% 10%;
+    --surface-hover: 222 47% 12%;
+    --text-tertiary: 215 20% 55%;
     
-    --gradient-primary: linear-gradient(135deg, hsl(250 91% 65%), hsl(280 80% 65%));
-    --gradient-header: linear-gradient(90deg, hsl(250 91% 65%), hsl(280 80% 65%));
-    --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(250 91% 65% / 0.25), transparent);
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(221 83% 40%));
+    --gradient-header: linear-gradient(90deg, hsl(217 91% 60%), hsl(187 85% 53%));
   }
 }
 
@@ -100,27 +98,5 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-primary);
-  }
-
-  .hero-glow {
-    background-image: var(--gradient-hero);
-  }
-
-  .glass-card {
-    @apply bg-card/80 backdrop-blur-sm border border-border/50;
-  }
-}
-
-@layer components {
-  .search-pill {
-    @apply rounded-full px-4 py-2 text-sm font-medium transition-all duration-200;
-    @apply bg-secondary/80 text-secondary-foreground hover:bg-secondary;
-    @apply border border-transparent hover:border-primary/20;
-    @apply hover:shadow-md hover:-translate-y-0.5;
   }
 }
