@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import SearchBar from "./SearchBar";
+import { siteConfig } from "@/config/site";
+import { SearchBar } from "@/features/search";
 
 interface HeroProps {
   onSearch: (query: string) => void;
@@ -19,14 +20,14 @@ const Hero = ({ onSearch }: HeroProps) => {
           <br />
           <span className="text-primary">videos using AI</span>
         </motion.h1>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-4 text-lg text-muted-foreground"
         >
-          Find videos instantly and explore them in a smarter way.
+          {siteConfig.tagline}
         </motion.p>
 
         <SearchBar onSearch={onSearch} className="mt-10" />
@@ -38,7 +39,7 @@ const Hero = ({ onSearch }: HeroProps) => {
           className="mt-6 flex items-center justify-center gap-4 text-sm text-muted-foreground"
         >
           <span>Try:</span>
-          {["Machine Learning", "React Tutorial", "Design Systems"].map((term, i) => (
+          {siteConfig.suggestedSearches.map((term) => (
             <button
               key={term}
               onClick={() => onSearch(term)}
