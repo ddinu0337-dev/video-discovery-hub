@@ -1,4 +1,4 @@
-import { Search, Sparkles } from "lucide-react";
+import { Search } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -21,19 +21,19 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.1 }}
+      transition={{ duration: 0.3, delay: 0.08 }}
       className={className}
     >
       <div
-        className={`relative flex items-center rounded-2xl border bg-card transition-all duration-300 ${
+        className={`relative flex items-center rounded-xl border bg-card transition-all duration-200 ${
           isFocused
-            ? "border-primary/30 shadow-elevated ring-4 ring-primary/5"
-            : "border-border/60 shadow-subtle hover:border-border"
+            ? "border-primary/40 shadow-sm ring-2 ring-primary/10"
+            : "border-border/70 hover:border-border"
         }`}
       >
-        <Search className="absolute left-5 h-5 w-5 text-muted-foreground" />
+        <Search className="absolute left-4 h-4 w-4 text-muted-foreground" />
         <input
           type="text"
           value={query}
@@ -41,21 +41,8 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder="Search videos, topics, or concepts…"
-          className="h-14 w-full bg-transparent pl-14 pr-14 text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
+          className="h-11 w-full bg-transparent pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
-        <div className="absolute right-4 flex items-center gap-2">
-          {query && (
-            <motion.button
-              type="submit"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="flex h-8 items-center gap-1.5 rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              <Sparkles className="h-3.5 w-3.5" />
-              Search
-            </motion.button>
-          )}
-        </div>
       </div>
     </motion.form>
   );

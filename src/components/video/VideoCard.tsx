@@ -13,10 +13,10 @@ const VideoCard = ({ video, variant = "default", index = 0 }: VideoCardProps) =>
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={`group cursor-pointer ${isCompact ? "w-[280px] flex-shrink-0" : ""}`}
+      transition={{ duration: 0.3, delay: index * 0.03 }}
+      className="group cursor-pointer"
     >
       <VideoThumbnail
         src={video.thumbnail}
