@@ -41,7 +41,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder="Search videos, topics, or concepts…"
-          className="h-14 w-full bg-transparent pl-14 pr-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
+          className="h-16 w-full bg-transparent pl-14 pr-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
       </div>
     </motion.form>
