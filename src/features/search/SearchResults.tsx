@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import type { Video } from "@/types/video";
 import { SearchVideoCard } from "@/components/video";
-import { VideoSkeletonGrid } from "@/components/common";
+import { WaveLoader } from "@/components/common/Loaders";
 import { Header } from "@/components/layout";
 
 interface SearchResultsProps {
@@ -44,7 +44,11 @@ const SearchResults = ({
       <div className="flex-1 overflow-y-auto pb-28">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6">
           {/* Video Results */}
-          {isLoading && <VideoSkeletonGrid count={8} />}
+          {isLoading && (
+            <div className="flex items-center justify-center py-12">
+              <WaveLoader />
+            </div>
+          )}
 
           {!isLoading && (
             <motion.div
