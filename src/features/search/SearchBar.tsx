@@ -60,7 +60,11 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
         />
         <button
           type="submit"
-          className="absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 transition-opacity shadow-md"
+          disabled={!query.trim()}
+          className={cn(
+            "absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground transition-all shadow-md",
+            query.trim() ? "hover:opacity-90" : "opacity-40 cursor-not-allowed"
+          )}
         >
           <Send className="h-4 w-4" />
         </button>
