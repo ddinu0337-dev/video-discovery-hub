@@ -27,13 +27,13 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
       className={className}
     >
       <div
-        className={`relative flex items-center rounded-xl border bg-card transition-all duration-200 ${
+        className={`relative flex items-center rounded-2xl border bg-card transition-all duration-200 ${
           isFocused
-            ? "border-primary/40 shadow-sm ring-2 ring-primary/10"
+            ? "border-primary/40 shadow-md ring-2 ring-primary/10"
             : "border-border/70 hover:border-border"
         }`}
       >
-        <Search className="absolute left-4 h-4 w-4 text-muted-foreground" />
+        <Search className="absolute left-5 h-5 w-5 text-muted-foreground" />
         <input
           type="text"
           value={query}
@@ -41,7 +41,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder="Search videos, topics, or concepts…"
-          className="h-11 w-full bg-transparent pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+          className="h-14 w-full bg-transparent pl-14 pr-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
       </div>
     </motion.form>
