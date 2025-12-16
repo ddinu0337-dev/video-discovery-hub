@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Send, ChevronDown, ChevronUp } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { Send, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,6 @@ interface ChatMessage {
 
 const VideoDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
@@ -58,23 +57,12 @@ const VideoDetail = () => {
 
   return (
     <Shell>
-      <div className="py-4">
-        {/* Back Button */}
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => navigate(-1)}
-          className="mb-3 gap-2 text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back
-        </Button>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="py-2 px-1">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
           {/* Video Player & Info Section */}
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-2 space-y-2">
             {/* YouTube Player */}
-            <div className="aspect-video w-full rounded-xl overflow-hidden bg-black/5 border border-border/50">
+            <div className="aspect-video w-full rounded-lg overflow-hidden bg-black/5 border border-border/50">
               <iframe
                 src={`https://www.youtube.com/embed/${id}`}
                 title="YouTube video player"
@@ -85,15 +73,17 @@ const VideoDetail = () => {
             </div>
 
             {/* Video Info */}
-            <div className="space-y-2">
-              <h1 className="text-lg sm:text-xl font-semibold text-foreground leading-tight">
+            <div className="space-y-1.5">
+              <h1 className="text-base sm:text-lg font-semibold text-foreground leading-tight">
                 Video Title
               </h1>
               
               {/* Description Box */}
-              <div className="bg-muted/30 rounded-lg p-3">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1.5">
-                  <span className="font-medium">123K views</span>
+              <div className="bg-muted/30 rounded-lg p-2.5">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
+                  <span className="font-medium text-foreground">Channel Name</span>
+                  <span>•</span>
+                  <span>123K views</span>
                   <span>•</span>
                   <span>2 days ago</span>
                 </div>
@@ -104,12 +94,12 @@ const VideoDetail = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => setShowFullDescription(!showFullDescription)}
-                  className="mt-1 h-auto p-0 text-sm font-medium text-foreground hover:bg-transparent"
+                  className="mt-1 h-auto p-0 text-xs font-medium text-foreground hover:bg-transparent"
                 >
                   {showFullDescription ? (
-                    <>Show less <ChevronUp className="h-4 w-4 ml-1" /></>
+                    <>Show less <ChevronUp className="h-3 w-3 ml-1" /></>
                   ) : (
-                    <>Show more <ChevronDown className="h-4 w-4 ml-1" /></>
+                    <>Show more <ChevronDown className="h-3 w-3 ml-1" /></>
                   )}
                 </Button>
               </div>
@@ -118,16 +108,16 @@ const VideoDetail = () => {
 
           {/* Chat Section */}
           <div className="lg:col-span-1">
-            <div className="bg-card border border-border/50 rounded-xl h-[400px] lg:h-[calc(100vh-180px)] flex flex-col">
+            <div className="bg-card border border-border/50 rounded-lg h-[350px] lg:h-[calc(100vh-120px)] flex flex-col">
               {/* Chat Header */}
-              <div className="p-3 border-b border-border/50">
+              <div className="p-2.5 border-b border-border/50">
                 <h2 className="font-semibold text-foreground text-sm">AI Chat</h2>
                 <p className="text-xs text-muted-foreground">Ask questions about this video</p>
               </div>
 
               {/* Chat Messages */}
-              <ScrollArea className="flex-1 p-3">
-                <div className="space-y-3">
+              <ScrollArea className="flex-1 p-2.5">
+                <div className="space-y-2.5">
                   {chatMessages.map((msg) => (
                     <div
                       key={msg.id}
@@ -148,20 +138,20 @@ const VideoDetail = () => {
               </ScrollArea>
 
               {/* Chat Input */}
-              <div className="p-3 border-t border-border/50">
+              <div className="p-2.5 border-t border-border/50">
                 <div className="flex items-center gap-2">
                   <Input
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Ask about this video..."
-                    className="flex-1 bg-muted/50 border-border/50 h-9 text-sm"
+                    className="flex-1 bg-muted/50 border-border/50 h-8 text-sm"
                   />
                   <Button
                     size="icon"
                     onClick={handleSendMessage}
                     disabled={!message.trim()}
-                    className="bg-primary hover:bg-primary/90 h-9 w-9"
+                    className="bg-primary hover:bg-primary/90 h-8 w-8"
                   >
                     <Send className="h-4 w-4" />
                   </Button>
