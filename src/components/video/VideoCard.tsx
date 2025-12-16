@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import type { Video } from "@/types/video";
 import VideoThumbnail from "./VideoThumbnail";
+import { routes } from "@/config/routes";
 
 interface VideoCardProps {
   video: Video;
@@ -8,14 +10,31 @@ interface VideoCardProps {
   index?: number;
 }
 
+const extractVideoId = (video: Video): string => {
+  // Try to extract from link first (YouTube URL)
+  if (video.link) {
+    const match = video.link.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&\s?]+)/);
+    if (match) return match[1];
+  }
+  // Fallback to video.id
+  return video.id;
+};
+
 const VideoCard = ({ video, variant = "default", index = 0 }: VideoCardProps) => {
+  const navigate = useNavigate();
   const isCompact = variant === "compact";
+  const videoId = extractVideoId(video);
+
+  const handleClick = () => {
+    navigate(routes.video(videoId));
+  };
 
   return (
     <motion.article
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.03 }}
+      onClick={handleClick}
       className="group cursor-pointer rounded-xl bg-card border border-border/50 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       <VideoThumbnail
