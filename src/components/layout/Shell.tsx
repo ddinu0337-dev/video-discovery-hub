@@ -1,17 +1,19 @@
 import { ReactNode } from "react";
+import Header from "./Header";
 
-interface LayoutProps {
+interface ShellProps {
   children: ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Shell = ({ children }: ShellProps) => {
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        {children}
+        <Header />
+        <main>{children}</main>
       </div>
     </div>
   );
 };
 
-export default Layout;
+export default Shell;

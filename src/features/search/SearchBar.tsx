@@ -45,15 +45,15 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
         />
         <div className="absolute right-4 flex items-center gap-2">
           {query && (
-            <motion.div
+            <motion.button
+              type="submit"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex h-8 items-center gap-1.5 rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground cursor-pointer hover:bg-primary/90 transition-colors"
-              onClick={handleSubmit}
+              className="flex h-8 items-center gap-1.5 rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               <Sparkles className="h-3.5 w-3.5" />
               Search
-            </motion.div>
+            </motion.button>
           )}
         </div>
       </div>

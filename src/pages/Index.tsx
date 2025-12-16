@@ -1,37 +1,15 @@
-import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Layout from "@/components/Layout";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import RecentVideos from "@/components/RecentVideos";
-import SearchResults from "@/components/SearchResults";
-import { recentVideos, searchResults } from "@/data/mockVideos";
+import { Shell } from "@/components/layout";
+import { Hero } from "@/features/home";
+import { RecentVideos, useRecentVideos } from "@/features/recent-videos";
+import { SearchResults, useSearch } from "@/features/search";
 
 const Index = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSearch = (query: string) => {
-    setIsLoading(true);
-    setSearchQuery(query);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSearching(true);
-      setIsLoading(false);
-    }, 800);
-  };
-
-  const handleClear = () => {
-    setSearchQuery("");
-    setIsSearching(false);
-  };
+  const { videos: recentVideos } = useRecentVideos();
+  const { query, isSearching, isLoading, results, search, clear } = useSearch();
 
   return (
-    <Layout>
-      <Header />
-      
+    <Shell>
       <AnimatePresence mode="wait">
         {!isSearching ? (
           <motion.div
@@ -41,7 +19,7 @@ const Index = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <Hero onSearch={handleSearch} />
+            <Hero onSearch={search} />
             <RecentVideos videos={recentVideos} />
           </motion.div>
         ) : (
@@ -53,16 +31,16 @@ const Index = () => {
             transition={{ duration: 0.2 }}
           >
             <SearchResults
-              query={searchQuery}
-              videos={searchResults}
+              query={query}
+              videos={results}
               isLoading={isLoading}
-              onSearch={handleSearch}
-              onClear={handleClear}
+              onSearch={search}
+              onClear={clear}
             />
           </motion.div>
         )}
       </AnimatePresence>
-    </Layout>
+    </Shell>
   );
 };
 

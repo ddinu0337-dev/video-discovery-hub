@@ -1,9 +1,10 @@
 import { Play, User } from "lucide-react";
 import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
 const Header = () => {
   return (
-    <motion.header 
+    <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -16,7 +17,7 @@ const Header = () => {
             <Play className="h-4 w-4 fill-current" />
           </div>
           <span className="text-lg font-semibold text-foreground tracking-tight">
-            VideoAI
+            {siteConfig.name}
           </span>
         </div>
 

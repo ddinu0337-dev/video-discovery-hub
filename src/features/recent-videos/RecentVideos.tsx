@@ -1,6 +1,7 @@
 import { Clock, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import VideoCard, { Video } from "./VideoCard";
+import type { Video } from "@/types/video";
+import { VideoGrid } from "@/components/video";
 
 interface RecentVideosProps {
   videos: Video[];
@@ -40,19 +41,7 @@ const RecentVideos = ({ videos }: RecentVideosProps) => {
         </button>
       </div>
 
-      {/* Horizontal scroll on mobile, grid on desktop */}
-      <div className="relative">
-        <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0">
-          {videos.map((video, index) => (
-            <VideoCard
-              key={video.id}
-              video={video}
-              variant="compact"
-              index={index}
-            />
-          ))}
-        </div>
-      </div>
+      <VideoGrid videos={videos} variant="compact" />
     </motion.section>
   );
 };

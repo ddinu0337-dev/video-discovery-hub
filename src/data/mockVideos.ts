@@ -1,4 +1,4 @@
-import { Video } from "@/components/VideoCard";
+import type { Video } from "@/types/video";
 
 export const recentVideos: Video[] = [
   {
