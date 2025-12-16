@@ -33,13 +33,15 @@ const SearchResults = ({
 
   return (
     <div className="min-h-screen bg-secondary/50 flex flex-col">
-      {/* Header */}
-      <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <Header />
+      {/* Fixed Header */}
+      <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
+          <Header />
+        </div>
       </div>
 
       {/* Fixed Plus Icon */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-20 right-4 z-40">
         <button
           onClick={onClear}
           className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors shadow-sm"
