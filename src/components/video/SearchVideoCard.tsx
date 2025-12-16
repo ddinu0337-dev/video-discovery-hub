@@ -14,25 +14,25 @@ const SearchVideoCard = ({ video, index = 0 }: SearchVideoCardProps) => {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.04 }}
-      className="group cursor-pointer"
+      className="group cursor-pointer rounded-xl bg-card border border-border/50 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       <VideoThumbnail
         src={video.thumbnail}
         alt={video.title}
         duration={video.duration}
-        className="rounded-xl"
+        className="rounded-none"
       />
 
-      <div className="mt-3 space-y-1.5">
+      <div className="p-3 space-y-1.5">
         <h3 className="font-semibold text-foreground text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors">
           {video.title}
         </h3>
         
-        <p className="text-xs text-primary line-clamp-2 leading-relaxed">
+        <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
           {video.description}
         </p>
 
-        <p className="text-xs text-foreground">
+        <p className="text-xs font-medium text-foreground">
           {video.channel}
         </p>
 
