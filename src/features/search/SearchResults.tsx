@@ -31,82 +31,79 @@ const SearchResults = ({
   };
 
   return (
-    <div className="min-h-screen bg-secondary/30">
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/40">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+    <div className="min-h-screen bg-secondary/50 flex flex-col">
+      {/* Top Header Bar with gradient */}
+      <div className="w-full bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] h-14" />
+
+      {/* Chat-like Content Area */}
+      <div className="flex-1 overflow-y-auto pb-28">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6">
+          {/* Chat Header - Query bubble aligned right */}
+          <div className="flex items-center justify-end gap-3 mb-8">
             <button
               onClick={onClear}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             >
-              ← Back
+              <Plus className="h-4 w-4" />
             </button>
             
-            <div className="flex items-center gap-3">
-              <button className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors">
-                <Plus className="h-4 w-4" />
-              </button>
-              
-              <div className="flex items-center gap-2 rounded-full bg-primary px-4 py-2">
-                <span className="text-sm font-medium text-primary-foreground">
-                  {query}
-                </span>
-              </div>
-              
-              <div className="h-9 w-9 rounded-full bg-secondary overflow-hidden">
-                <div className="h-full w-full flex items-center justify-center text-muted-foreground">
-                  <User className="h-4 w-4" />
-                </div>
+            <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] px-5 py-2.5 shadow-md">
+              <span className="text-sm font-medium text-primary-foreground">
+                {query}
+              </span>
+            </div>
+            
+            <div className="h-10 w-10 rounded-full bg-card border border-border overflow-hidden shadow-sm">
+              <div className="h-full w-full flex items-center justify-center text-muted-foreground">
+                <User className="h-5 w-5" />
               </div>
             </div>
           </div>
+
+          {/* Video Results */}
+          {isLoading && <VideoSkeletonGrid count={8} />}
+
+          {!isLoading && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            >
+              {videos.map((video, index) => (
+                <SearchVideoCard key={video.id} video={video} index={index} />
+              ))}
+            </motion.div>
+          )}
         </div>
       </div>
 
-      {/* Content */}
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-8 pb-28">
-        {isLoading && <VideoSkeletonGrid count={8} />}
-
-        {!isLoading && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      {/* Fixed Bottom Input */}
+      <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-secondary via-secondary to-transparent pt-8 pb-6">
+        <div className="mx-auto max-w-2xl px-4">
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
-            {videos.map((video, index) => (
-              <SearchVideoCard key={video.id} video={video} index={index} />
-            ))}
-          </motion.div>
-        )}
-      </div>
-
-      {/* Floating Input */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-2xl px-4">
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="relative"
-        >
-          <div className="flex items-center rounded-full bg-card border border-border shadow-lg">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask to find videos..."
-              className="h-12 flex-1 bg-transparent pl-5 pr-14 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="absolute right-2 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              <Send className="h-4 w-4" />
-            </button>
-          </div>
-        </motion.form>
+            <div className="relative flex items-center rounded-full bg-card border border-border shadow-elevated">
+              <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Ask to find videos..."
+                className="h-14 flex-1 bg-transparent pl-6 pr-16 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-[hsl(200_80%_60%)] text-primary-foreground hover:opacity-90 transition-opacity shadow-md"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </div>
+          </motion.form>
+        </div>
       </div>
     </div>
   );
