@@ -7,7 +7,7 @@ import { SearchResults, useSearch } from "@/features/search";
 
 const Index = () => {
   const { videos: recentVideos } = useRecentVideos();
-  const { query, isSearching, isLoading, results, search, clear } = useSearch();
+  const { query, isSearching, isLoading, results, error, search, clear, retry } = useSearch();
 
   const scrollToVideos = () => {
     document.getElementById("recent-videos")?.scrollIntoView({ behavior: "smooth" });
@@ -54,8 +54,10 @@ const Index = () => {
             query={query}
             videos={results}
             isLoading={isLoading}
+            error={error}
             onSearch={search}
             onClear={clear}
+            onRetry={retry}
           />
         </motion.div>
       )}
