@@ -6,6 +6,7 @@ export interface Video {
   channel: string;
   duration: string;
   views: string;
+  link?: string;
 }
 
 export interface SearchState {
