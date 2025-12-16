@@ -62,7 +62,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
           type="submit"
           disabled={!query.trim()}
           className={cn(
-            "absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground transition-all shadow-md",
+            "absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-all shadow-md",
             query.trim() ? "hover:opacity-90" : "opacity-40 cursor-not-allowed"
           )}
         >
