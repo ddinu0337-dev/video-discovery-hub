@@ -19,8 +19,9 @@ const Index = () => {
           transition={{ duration: 0.2 }}
         >
           <Shell>
-            <Hero onSearch={search} />
-            <RecentVideos videos={recentVideos} />
+            <div className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center">
+              <Hero onSearch={search} />
+            </div>
           </Shell>
         </motion.div>
       ) : (
