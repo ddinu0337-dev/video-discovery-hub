@@ -3,7 +3,7 @@ import type { Video } from "@/types/video";
 export const recentVideos: Video[] = [
   {
     id: "1",
-    title: "Introduction to Machine Learning Fundamentals",
+    title: "Introduction to Machine Learning",
     thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=640&h=360&fit=crop",
     channel: "AI Academy",
     duration: "12:34",
@@ -11,7 +11,7 @@ export const recentVideos: Video[] = [
   },
   {
     id: "2",
-    title: "Building Modern Web Applications with React",
+    title: "Building Web Apps with React",
     thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=640&h=360&fit=crop",
     channel: "Dev Mastery",
     duration: "28:15",
@@ -19,7 +19,7 @@ export const recentVideos: Video[] = [
   },
   {
     id: "3",
-    title: "Design Systems: From Theory to Practice",
+    title: "Design Systems Explained",
     thumbnail: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=640&h=360&fit=crop",
     channel: "Design Hub",
     duration: "18:42",
@@ -27,11 +27,19 @@ export const recentVideos: Video[] = [
   },
   {
     id: "4",
-    title: "Understanding Neural Networks Deep Dive",
+    title: "Neural Networks Deep Dive",
     thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=640&h=360&fit=crop",
     channel: "Tech Explained",
     duration: "45:20",
     views: "512K views",
+  },
+  {
+    id: "13",
+    title: "TypeScript Best Practices",
+    thumbnail: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=640&h=360&fit=crop",
+    channel: "Code Weekly",
+    duration: "22:10",
+    views: "178K views",
   },
 ];
 

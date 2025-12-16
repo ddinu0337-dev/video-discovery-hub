@@ -10,7 +10,7 @@ interface VideoGridProps {
 const VideoGrid = ({ videos, variant = "default" }: VideoGridProps) => {
   if (variant === "compact") {
     return (
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-5">
         {videos.map((video, index) => (
           <VideoCard key={video.id} video={video} variant="compact" index={index} />
         ))}

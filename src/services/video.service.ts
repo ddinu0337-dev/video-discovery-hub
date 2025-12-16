@@ -10,14 +10,10 @@ export const videoService = {
     return recentVideos;
   },
 
-  async searchVideos(query: string): Promise<Video[]> {
-    await simulateDelay(800);
+  async searchVideos(_query: string): Promise<Video[]> {
+    await simulateDelay(600);
     // In real implementation, this would call the FastAPI backend
-    // For now, return mock results filtered by query
-    return searchResults.filter(
-      (video) =>
-        video.title.toLowerCase().includes(query.toLowerCase()) ||
-        video.channel.toLowerCase().includes(query.toLowerCase())
-    );
+    // For now, return all mock results
+    return searchResults;
   },
 };

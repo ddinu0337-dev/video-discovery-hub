@@ -1,4 +1,4 @@
-import { Search, X } from "lucide-react";
+import { ArrowLeft, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Video } from "@/types/video";
 import { VideoGrid } from "@/components/video";
@@ -21,42 +21,33 @@ const SearchResults = ({
   onClear,
 }: SearchResultsProps) => {
   return (
-    <div className="py-8">
-      {/* Search bar sticky on mobile */}
-      <div className="sticky top-[73px] z-40 bg-background/80 backdrop-blur-xl py-4 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 border-b border-border/30">
-        <div className="max-w-2xl mx-auto">
-          <SearchBar onSearch={onSearch} />
+    <div className="py-6">
+      {/* Header with back button and search */}
+      <div className="sticky top-[73px] z-40 bg-background/95 backdrop-blur-lg py-4 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div className="flex items-center gap-3 max-w-3xl mx-auto">
+          <button
+            onClick={onClear}
+            className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors shrink-0"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+          <div className="flex-1">
+            <SearchBar onSearch={onSearch} />
+          </div>
         </div>
       </div>
 
-      {/* Results header */}
-      <motion.div
+      {/* Results info */}
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="flex items-center justify-between mt-8 mb-6"
+        className="mt-6 mb-5 text-sm text-muted-foreground"
       >
-        <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent">
-            <Search className="h-4 w-4 text-accent-foreground" />
-          </div>
-          <div>
-            <h2 className="font-medium text-foreground">Results for "{query}"</h2>
-            <p className="text-sm text-muted-foreground">
-              {videos.length} videos found
-            </p>
-          </div>
-        </div>
-        <button
-          onClick={onClear}
-          className="flex items-center gap-1.5 rounded-lg bg-secondary px-3 py-2 text-sm text-secondary-foreground hover:bg-secondary/80 transition-colors"
-        >
-          <X className="h-4 w-4" />
-          Clear
-        </button>
-      </motion.div>
+        {isLoading ? "Searching..." : `${videos.length} results for "${query}"`}
+      </motion.p>
 
       {/* Loading skeleton */}
-      {isLoading && <VideoSkeletonGrid />}
+      {isLoading && <VideoSkeletonGrid count={8} />}
 
       {/* Results grid */}
       {!isLoading && videos.length > 0 && <VideoGrid videos={videos} />}
