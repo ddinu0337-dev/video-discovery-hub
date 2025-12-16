@@ -20,28 +20,29 @@ const SearchVideoCard = ({ video, index = 0 }: SearchVideoCardProps) => {
         src={video.thumbnail}
         alt={video.title}
         duration={video.duration}
+        className="rounded-xl"
       />
 
-      <div className="mt-3 space-y-2">
-        <h3 className="font-semibold text-foreground line-clamp-2 leading-snug group-hover:text-primary transition-colors">
+      <div className="mt-3 space-y-1.5">
+        <h3 className="font-semibold text-foreground text-sm leading-snug line-clamp-2 group-hover:text-primary transition-colors">
           {video.title}
         </h3>
         
-        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+        <p className="text-xs text-primary line-clamp-2 leading-relaxed">
           {video.description}
         </p>
 
-        <p className="text-sm font-medium text-foreground">
+        <p className="text-xs text-foreground">
           {video.channel}
         </p>
 
-        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+        <div className="flex items-center gap-3 text-xs text-muted-foreground pt-0.5">
           <span className="flex items-center gap-1">
-            <Eye className="h-3.5 w-3.5" />
+            <Eye className="h-3 w-3" />
             {video.views}
           </span>
           <span className="flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" />
+            <Clock className="h-3 w-3" />
             {video.duration}
           </span>
         </div>

@@ -32,34 +32,31 @@ const SearchResults = ({
 
   return (
     <div className="min-h-screen bg-secondary/50 flex flex-col">
-      {/* Top Header Bar with gradient */}
-      <div className="w-full bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] h-14" />
-
-      {/* Chat-like Content Area */}
-      <div className="flex-1 overflow-y-auto pb-28">
-        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6">
-          {/* Chat Header - Query bubble aligned right */}
-          <div className="flex items-center justify-end gap-3 mb-8">
-            <button
-              onClick={onClear}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-            >
-              <Plus className="h-4 w-4" />
-            </button>
-            
-            <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] px-5 py-2.5 shadow-md">
-              <span className="text-sm font-medium text-primary-foreground">
-                {query}
-              </span>
-            </div>
-            
-            <div className="h-10 w-10 rounded-full bg-card border border-border overflow-hidden shadow-sm">
-              <div className="h-full w-full flex items-center justify-center text-muted-foreground">
-                <User className="h-5 w-5" />
-              </div>
-            </div>
+      {/* Fixed Top Right Controls */}
+      <div className="fixed top-4 right-4 z-50 flex items-center gap-3">
+        <button
+          onClick={onClear}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors shadow-sm"
+        >
+          <Plus className="h-5 w-5" />
+        </button>
+        
+        <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] px-5 py-2.5 shadow-md">
+          <span className="text-sm font-medium text-primary-foreground">
+            {query}
+          </span>
+        </div>
+        
+        <div className="h-10 w-10 rounded-full bg-card border border-border overflow-hidden shadow-sm">
+          <div className="h-full w-full flex items-center justify-center text-muted-foreground">
+            <User className="h-5 w-5" />
           </div>
+        </div>
+      </div>
 
+      {/* Content Area */}
+      <div className="flex-1 overflow-y-auto pb-28 pt-20">
+        <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-6">
           {/* Video Results */}
           {isLoading && <VideoSkeletonGrid count={8} />}
 

@@ -1,14 +1,16 @@
 import { Play } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface VideoThumbnailProps {
   src: string;
   alt: string;
   duration: string;
+  className?: string;
 }
 
-const VideoThumbnail = ({ src, alt, duration }: VideoThumbnailProps) => {
+const VideoThumbnail = ({ src, alt, duration, className }: VideoThumbnailProps) => {
   return (
-    <div className="relative aspect-video overflow-hidden rounded-xl bg-secondary">
+    <div className={cn("relative aspect-video overflow-hidden rounded-xl bg-secondary", className)}>
       <img
         src={src}
         alt={alt}
@@ -16,7 +18,7 @@ const VideoThumbnail = ({ src, alt, duration }: VideoThumbnailProps) => {
       />
 
       {/* Duration badge */}
-      <div className="absolute bottom-2 right-2 rounded-md bg-foreground/80 px-1.5 py-0.5 text-xs font-medium text-background">
+      <div className="absolute bottom-2 right-2 rounded bg-foreground/90 px-1.5 py-0.5 text-xs font-medium text-background">
         {duration}
       </div>
 
