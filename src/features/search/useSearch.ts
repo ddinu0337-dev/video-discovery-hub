@@ -11,12 +11,12 @@ export function useSearch() {
   const [results, setResults] = useState<Video[]>([]);
 
   const search = useCallback(async (query: string) => {
-    setState((prev) => ({ ...prev, query, isLoading: true }));
+    setState((prev) => ({ ...prev, query, isSearching: true, isLoading: true }));
 
     try {
       const videos = await videoService.searchVideos(query);
       setResults(videos);
-      setState((prev) => ({ ...prev, isSearching: true, isLoading: false }));
+      setState((prev) => ({ ...prev, isLoading: false }));
     } catch (error) {
       console.error("Search failed:", error);
       setState((prev) => ({ ...prev, isLoading: false }));
