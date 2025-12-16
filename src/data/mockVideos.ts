@@ -1,0 +1,103 @@
+import { Video } from "@/components/VideoCard";
+
+export const recentVideos: Video[] = [
+  {
+    id: "1",
+    title: "Introduction to Machine Learning Fundamentals",
+    thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=640&h=360&fit=crop",
+    channel: "AI Academy",
+    duration: "12:34",
+    views: "234K views",
+  },
+  {
+    id: "2",
+    title: "Building Modern Web Applications with React",
+    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=640&h=360&fit=crop",
+    channel: "Dev Mastery",
+    duration: "28:15",
+    views: "89K views",
+  },
+  {
+    id: "3",
+    title: "Design Systems: From Theory to Practice",
+    thumbnail: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=640&h=360&fit=crop",
+    channel: "Design Hub",
+    duration: "18:42",
+    views: "156K views",
+  },
+  {
+    id: "4",
+    title: "Understanding Neural Networks Deep Dive",
+    thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=640&h=360&fit=crop",
+    channel: "Tech Explained",
+    duration: "45:20",
+    views: "512K views",
+  },
+];
+
+export const searchResults: Video[] = [
+  {
+    id: "5",
+    title: "Complete Guide to Large Language Models",
+    thumbnail: "https://images.unsplash.com/photo-1676299081847-5eb4906f80c5?w=640&h=360&fit=crop",
+    channel: "AI Insights",
+    duration: "32:10",
+    views: "1.2M views",
+  },
+  {
+    id: "6",
+    title: "Python for Data Science - Full Course",
+    thumbnail: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=640&h=360&fit=crop",
+    channel: "Code Academy",
+    duration: "2:45:00",
+    views: "3.4M views",
+  },
+  {
+    id: "7",
+    title: "The Art of UI Animation",
+    thumbnail: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=640&h=360&fit=crop",
+    channel: "Motion Design",
+    duration: "15:30",
+    views: "78K views",
+  },
+  {
+    id: "8",
+    title: "Advanced TypeScript Patterns",
+    thumbnail: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=640&h=360&fit=crop",
+    channel: "TypeScript Weekly",
+    duration: "24:18",
+    views: "145K views",
+  },
+  {
+    id: "9",
+    title: "Building AI Assistants with GPT-4",
+    thumbnail: "https://images.unsplash.com/photo-1684369176170-463e84248b70?w=640&h=360&fit=crop",
+    channel: "OpenAI Tutorials",
+    duration: "38:45",
+    views: "892K views",
+  },
+  {
+    id: "10",
+    title: "Minimalist Design Principles",
+    thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=640&h=360&fit=crop",
+    channel: "Design Daily",
+    duration: "11:22",
+    views: "267K views",
+  },
+  {
+    id: "11",
+    title: "Next.js 14 - What's New",
+    thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=640&h=360&fit=crop",
+    channel: "Vercel Official",
+    duration: "19:55",
+    views: "456K views",
+  },
+  {
+    id: "12",
+    title: "CSS Grid Masterclass",
+    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=360&fit=crop",
+    channel: "CSS Tricks",
+    duration: "42:30",
+    views: "623K views",
+  },
+];
