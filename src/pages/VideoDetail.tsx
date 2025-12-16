@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Send, ChevronDown, ChevronUp } from "lucide-react";
+import { Send } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +15,6 @@ interface ChatMessage {
 const VideoDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [message, setMessage] = useState("");
-  const [showFullDescription, setShowFullDescription] = useState(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       id: "1",
@@ -53,15 +52,12 @@ const VideoDetail = () => {
     }
   };
 
-  const description = "Video description will appear here. This section provides detailed information about the video content, helping viewers understand what they're about to watch. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
-
   return (
     <Shell>
       <div className="py-2 px-1">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-          {/* Video Player & Info Section */}
-          <div className="lg:col-span-2 space-y-2">
-            {/* YouTube Player */}
+          {/* Video Player */}
+          <div className="lg:col-span-2">
             <div className="aspect-video w-full rounded-lg overflow-hidden bg-black/5 border border-border/50">
               <iframe
                 src={`https://www.youtube.com/embed/${id}`}
@@ -70,39 +66,6 @@ const VideoDetail = () => {
                 allowFullScreen
                 className="w-full h-full"
               />
-            </div>
-
-            {/* Video Info */}
-            <div className="space-y-1.5">
-              <h1 className="text-base sm:text-lg font-semibold text-foreground leading-tight">
-                Video Title
-              </h1>
-              
-              {/* Description Box */}
-              <div className="bg-muted/30 rounded-lg p-2.5">
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                  <span className="font-medium text-foreground">Channel Name</span>
-                  <span>•</span>
-                  <span>123K views</span>
-                  <span>•</span>
-                  <span>2 days ago</span>
-                </div>
-                <p className={`text-sm text-foreground/80 leading-relaxed ${!showFullDescription ? "line-clamp-2" : ""}`}>
-                  {description}
-                </p>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowFullDescription(!showFullDescription)}
-                  className="mt-1 h-auto p-0 text-xs font-medium text-foreground hover:bg-transparent"
-                >
-                  {showFullDescription ? (
-                    <>Show less <ChevronUp className="h-3 w-3 ml-1" /></>
-                  ) : (
-                    <>Show more <ChevronDown className="h-3 w-3 ml-1" /></>
-                  )}
-                </Button>
-              </div>
             </div>
           </div>
 
