@@ -1,14 +1,19 @@
-import { Play, User } from "lucide-react";
+import { Play, User, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 
-const Header = () => {
+interface HeaderProps {
+  showPlus?: boolean;
+  onPlusClick?: () => void;
+}
+
+const Header = ({ showPlus, onPlusClick }: HeaderProps) => {
   return (
     <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50 py-4"
+      className="py-4"
     >
       <div className="flex items-center justify-between">
         {/* Logo */}
@@ -21,10 +26,20 @@ const Header = () => {
           </span>
         </div>
 
-        {/* Profile */}
-        <button className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground transition-colors">
-          <User className="h-4 w-4" />
-        </button>
+        {/* Right side */}
+        <div className="flex items-center gap-3">
+          {showPlus && (
+            <button 
+              onClick={onPlusClick}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+            >
+              <Plus className="h-4 w-4" />
+            </button>
+          )}
+          <button className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground transition-colors">
+            <User className="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </motion.header>
   );
