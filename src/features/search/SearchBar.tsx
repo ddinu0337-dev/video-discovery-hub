@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Search, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -56,8 +56,14 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder="Search videos, topics, or concepts…"
-          className="h-14 w-full rounded-2xl bg-card pl-14 pr-5 text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
+          className="h-14 w-full rounded-2xl bg-card pl-14 pr-16 text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
+        <button
+          type="submit"
+          className="absolute right-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 transition-opacity shadow-md"
+        >
+          <Send className="h-4 w-4" />
+        </button>
       </div>
     </motion.form>
   );
