@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Shell from "@/components/layout/Shell";
 import { cn } from "@/lib/utils";
 import { GeminiLoader } from "@/components/common/Loaders";
+import VideoInfo from "@/components/video/VideoInfo";
 
 interface ChatMessage {
   id: string;
@@ -73,6 +74,13 @@ const VideoDetail = () => {
                 className="w-full h-full"
               />
             </div>
+            <VideoInfo
+              title="Understanding React Hooks in Depth"
+              channelName="Tech Academy"
+              views="245K views"
+              publishedAt="3 weeks ago"
+              description="In this comprehensive tutorial, we dive deep into React Hooks and explore how they revolutionize state management in functional components. Learn about useState, useEffect, useContext, and custom hooks with practical examples."
+            />
           </div>
 
           {/* Chat Section */}
