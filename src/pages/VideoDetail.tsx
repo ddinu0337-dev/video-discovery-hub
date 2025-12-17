@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Shell from "@/components/layout/Shell";
 import { cn } from "@/lib/utils";
+import { GeminiLoader } from "@/components/common/Loaders";
 
 interface ChatMessage {
   id: string;
@@ -17,6 +18,7 @@ const VideoDetail = () => {
   const [message, setMessage] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       id: "1",
@@ -36,6 +38,7 @@ const VideoDetail = () => {
     
     setChatMessages((prev) => [...prev, userMessage]);
     setMessage("");
+    setIsTyping(true);
     
     setTimeout(() => {
       const aiResponse: ChatMessage = {
@@ -44,6 +47,7 @@ const VideoDetail = () => {
         content: "I'm analyzing the video content. This feature will be available soon!",
       };
       setChatMessages((prev) => [...prev, aiResponse]);
+      setIsTyping(false);
     }, 1000);
   };
 
@@ -111,6 +115,13 @@ const VideoDetail = () => {
                       </div>
                     </div>
                   ))}
+                  {isTyping && (
+                    <div className="flex justify-start">
+                      <div className="bg-muted rounded-lg px-3 py-2">
+                        <GeminiLoader />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </ScrollArea>
 
