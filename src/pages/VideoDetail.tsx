@@ -71,7 +71,7 @@ const VideoDetail = () => {
 
           {/* Chat Section */}
           <div className="lg:col-span-1">
-            <div className="bg-card border border-border/50 rounded-lg h-[350px] lg:h-[calc(100vh-120px)] flex flex-col">
+            <div className="bg-card border border-border/50 rounded-lg h-[450px] lg:h-[calc(100vh-80px)] flex flex-col">
               {/* Chat Header */}
               <div className="p-2.5 border-b border-border/50">
                 <h2 className="font-semibold text-foreground text-sm">AI Chat</h2>
