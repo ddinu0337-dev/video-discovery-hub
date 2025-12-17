@@ -75,9 +75,9 @@ const VideoDetail = () => {
               />
             </div>
             <VideoInfo
-              title="Understanding React Hooks in Depth"
-              channelName="Tech Academy"
-              views="245K views"
+              title="React Tutorial Full Course - Beginner to Pro (React 19, 2025)"
+              channelName="SuperSimpleDev"
+              views="445K views"
             />
           </div>
 
@@ -163,7 +163,7 @@ const VideoDetail = () => {
                       onFocus={() => setIsFocused(true)}
                       onBlur={() => setIsFocused(false)}
                       placeholder="Ask about this video..."
-                      className="h-10 w-full rounded-xl bg-card pl-4 pr-12 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                      className="h-12 w-full rounded-xl bg-card pl-4 pr-12 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                     />
                     <button
                       type="button"
