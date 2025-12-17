@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { Send, Maximize2, Minimize2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Shell from "@/components/layout/Shell";
+import { cn } from "@/lib/utils";
 
 interface ChatMessage {
   id: string;
@@ -16,6 +16,7 @@ const VideoDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [message, setMessage] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       id: "1",
@@ -115,22 +116,50 @@ const VideoDetail = () => {
 
               {/* Chat Input */}
               <div className="p-2.5 border-t border-border/50">
-                <div className="flex items-center gap-2">
-                  <Input
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Ask about this video..."
-                    className="flex-1 bg-muted/50 border-border/50 h-8 text-sm"
+                <div className="relative">
+                  {/* Gradient glow effect */}
+                  <div
+                    className={cn(
+                      "absolute -inset-[2px] rounded-xl bg-gradient-to-r from-primary via-accent to-primary opacity-0 blur-md transition-all duration-500",
+                      isFocused && "opacity-70 animate-pulse"
+                    )}
                   />
-                  <Button
-                    size="icon"
-                    onClick={handleSendMessage}
-                    disabled={!message.trim()}
-                    className="bg-primary hover:bg-primary/90 h-8 w-8"
+                  <div
+                    className={cn(
+                      "absolute -inset-[1px] rounded-xl bg-gradient-to-r from-primary via-accent to-primary opacity-0 transition-all duration-300",
+                      isFocused && "opacity-100"
+                    )}
+                  />
+                  <div
+                    className={cn(
+                      "relative flex items-center rounded-xl border bg-card transition-all duration-200",
+                      isFocused
+                        ? "border-transparent shadow-lg"
+                        : "border-border/70 hover:border-border"
+                    )}
                   >
-                    <Send className="h-4 w-4" />
-                  </Button>
+                    <input
+                      type="text"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      onFocus={() => setIsFocused(true)}
+                      onBlur={() => setIsFocused(false)}
+                      placeholder="Ask about this video..."
+                      className="h-10 w-full rounded-xl bg-card pl-4 pr-12 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleSendMessage}
+                      disabled={!message.trim()}
+                      className={cn(
+                        "absolute right-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-foreground transition-all shadow-md",
+                        message.trim() ? "hover:opacity-90" : "opacity-40 cursor-not-allowed"
+                      )}
+                    >
+                      <Send className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
