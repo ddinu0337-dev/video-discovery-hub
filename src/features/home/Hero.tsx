@@ -16,15 +16,8 @@ const Hero = ({ onSearch }: HeroProps) => {
           transition={{ duration: 0.4 }}
           className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
         >
-          <span className="sm:hidden">
-            Search and interact with<br />
-            videos using<br />
-            <span className="text-primary">AI</span>
-          </span>
-          <span className="hidden sm:inline">
-            Search and interact with{" "}
-            <span className="text-primary">videos using AI</span>
-          </span>
+          Search and interact with{" "}
+          <span className="text-primary">videos using AI</span>
         </motion.h1>
 
         <motion.p
