@@ -78,7 +78,6 @@ const VideoDetail = () => {
               title="Understanding React Hooks in Depth"
               channelName="Tech Academy"
               views="245K views"
-              publishedAt="3 weeks ago"
               description="In this comprehensive tutorial, we dive deep into React Hooks and explore how they revolutionize state management in functional components. Learn about useState, useEffect, useContext, and custom hooks with practical examples."
             />
           </div>
