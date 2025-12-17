@@ -2,14 +2,12 @@ interface VideoInfoProps {
   title?: string;
   channelName?: string;
   views?: string;
-  description?: string;
 }
 
 const VideoInfo = ({
   title = "Video Title",
   channelName = "Channel Name",
   views = "1.2M views",
-  description = "This is a video description. More details about the video content will appear here.",
 }: VideoInfoProps) => {
   return (
     <div className="mt-3 space-y-2">
@@ -23,13 +21,6 @@ const VideoInfo = ({
         <span className="font-medium text-foreground">{channelName}</span>
         <span>•</span>
         <span>{views}</span>
-      </div>
-
-      {/* Description */}
-      <div className="bg-muted/50 rounded-lg p-3">
-        <p className="text-sm text-foreground/90 whitespace-pre-line">
-          {description}
-        </p>
       </div>
     </div>
   );
