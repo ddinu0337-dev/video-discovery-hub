@@ -1,7 +1,6 @@
 import { Play, User, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
-import { MobileNav } from "./MobileNav";
 
 interface HeaderProps {
   showPlus?: boolean;
@@ -17,17 +16,14 @@ const Header = ({ showPlus, onPlusClick }: HeaderProps) => {
       className="py-4"
     >
       <div className="flex items-center justify-between">
-        {/* Left side with mobile nav and logo */}
-        <div className="flex items-center gap-2">
-          <MobileNav />
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] text-primary-foreground">
-              <Play className="h-4 w-4 fill-current" />
-            </div>
-            <span className="text-lg font-semibold text-foreground tracking-tight">
-              {siteConfig.name}
-            </span>
+        {/* Logo */}
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-r from-primary to-[hsl(187_85%_53%)] text-primary-foreground">
+            <Play className="h-4 w-4 fill-current" />
           </div>
+          <span className="text-lg font-semibold text-foreground tracking-tight">
+            {siteConfig.name}
+          </span>
         </div>
 
         {/* Right side */}
