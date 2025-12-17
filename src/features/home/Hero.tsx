@@ -17,8 +17,8 @@ const Hero = ({ onSearch }: HeroProps) => {
           className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
         >
           <span className="sm:hidden">
-            Search and interact<br />
-            with videos using<br />
+            Search and interact with<br />
+            videos using<br />
             <span className="text-primary">AI</span>
           </span>
           <span className="hidden sm:inline">
