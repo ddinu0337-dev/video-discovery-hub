@@ -56,7 +56,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder="Search videos, topics, or concepts…"
-          className="h-14 w-full rounded-2xl bg-card pl-14 pr-16 text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
+          className="h-14 w-full rounded-2xl bg-card pl-14 pr-16 text-sm sm:text-base text-foreground placeholder:text-muted-foreground placeholder:text-xs placeholder:sm:text-sm focus:outline-none"
         />
         <button
           type="submit"
