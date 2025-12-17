@@ -78,6 +78,7 @@ const VideoDetail = () => {
               title="React Tutorial Full Course - Beginner to Pro (React 19, 2025)"
               channelName="SuperSimpleDev"
               views="445K views"
+              description="Watch the latest version: https://youtu.be/SqcY0GlETPk?si=cir-2iVquJ3Eaw8X React JS Tutorial - Get up & running with React JS..."
             />
           </div>
 
