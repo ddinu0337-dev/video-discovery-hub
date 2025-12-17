@@ -43,10 +43,7 @@ const VideoInfo = ({
 
       {/* Channel & Stats Row */}
       <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
-        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-muted/60 hover:bg-muted transition-colors cursor-pointer">
-          <span className="hidden sm:flex w-5 h-5 rounded-full bg-gradient-to-br from-primary/80 to-accent/80 items-center justify-center text-[10px] font-semibold text-primary-foreground">
-            {channelName.charAt(0).toUpperCase()}
-          </span>
+        <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-muted/60 hover:bg-muted transition-colors cursor-pointer">
           <span className="font-medium text-foreground/90">{channelName}</span>
         </span>
         <span>•</span>
