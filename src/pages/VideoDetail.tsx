@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Send } from "lucide-react";
+import { Send, Maximize2, Minimize2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,7 @@ interface ChatMessage {
 const VideoDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [message, setMessage] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       id: "1",
@@ -70,12 +71,24 @@ const VideoDetail = () => {
           </div>
 
           {/* Chat Section */}
-          <div className="lg:col-span-1">
-            <div className="bg-card border border-border/50 rounded-lg h-[450px] lg:h-[calc(100vh-80px)] flex flex-col">
+          <div className={`lg:col-span-1 ${isExpanded ? 'fixed inset-0 z-50 bg-background p-4' : ''}`}>
+            <div className={`bg-card border border-border/50 rounded-lg flex flex-col ${
+              isExpanded ? 'h-full' : 'h-[450px] lg:h-[calc(100vh-80px)]'
+            }`}>
               {/* Chat Header */}
-              <div className="p-2.5 border-b border-border/50">
-                <h2 className="font-semibold text-foreground text-sm">AI Chat</h2>
-                <p className="text-xs text-muted-foreground">Ask questions about this video</p>
+              <div className="p-2.5 border-b border-border/50 flex items-center justify-between">
+                <div>
+                  <h2 className="font-semibold text-foreground text-sm">AI Chat</h2>
+                  <p className="text-xs text-muted-foreground">Ask questions about this video</p>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="h-8 w-8"
+                >
+                  {isExpanded ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+                </Button>
               </div>
 
               {/* Chat Messages */}
