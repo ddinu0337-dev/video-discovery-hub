@@ -62,9 +62,9 @@ const VideoDetail = () => {
   return (
     <Shell>
       <div className="py-2 px-1">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
           {/* Video Player */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <div className="aspect-video w-full rounded-lg overflow-hidden bg-black/5 border border-border/50">
               <iframe
                 src={`https://www.youtube.com/embed/${id}`}
